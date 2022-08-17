@@ -14,7 +14,7 @@ public class Ball {
         if (isStrike(otherBall)) {
             return "STRIKE";
         }
-        return "STRIKE";
+        return "BALL";
     }
 
     private boolean isStrike(Ball otherBall) {
