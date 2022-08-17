@@ -10,11 +10,17 @@ public class Ball {
         this.value = value;
     }
 
-    public String judge(Ball otherBall) {
+    public BallStatus judge(Ball otherBall) {
         if (isStrike(otherBall)) {
-            return "STRIKE";
+            return BallStatus.STRIKE;
+        } else if (isBall(otherBall)) {
+            return BallStatus.BALL;
         }
-        return "BALL";
+        return BallStatus.NOTHING;
+    }
+
+    private boolean isBall(Ball otherBall) {
+        return location != otherBall.location && value == otherBall.value;
     }
 
     private boolean isStrike(Ball otherBall) {
