@@ -1,5 +1,7 @@
 package baseball.second;
 
+import java.util.Objects;
+
 public class Ball {
     private final int location;
     private final int value;
@@ -9,6 +11,26 @@ public class Ball {
     }
 
     public String judge(Ball otherBall) {
-        return "";
+        if (isStrike(otherBall)) {
+            return "STRIKE";
+        }
+        return "STRIKE";
+    }
+
+    private boolean isStrike(Ball otherBall) {
+        return this.equals(otherBall);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ball ball = (Ball) o;
+        return location == ball.location && value == ball.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location, value);
     }
 }
