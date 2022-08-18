@@ -3,11 +3,11 @@ package baseball.second;
 import java.util.Objects;
 
 public class Ball {
-    private final int location;
-    private final int value;
+    private final BallLocation ballLocation;
+    private final BallNumber ballNumber;
     public Ball(int location, int value) {
-        this.location = location;
-        this.value = value;
+        this.ballLocation = new BallLocation(location);
+        ballNumber = new BallNumber(value);
     }
 
     public BallStatus judge(Ball otherBall) {
@@ -20,7 +20,7 @@ public class Ball {
     }
 
     private boolean isBall(Ball otherBall) {
-        return location != otherBall.location && value == otherBall.value;
+        return !ballLocation.equals(otherBall.ballLocation) && ballNumber.equals(otherBall.ballNumber);
     }
 
     private boolean isStrike(Ball otherBall) {
@@ -32,11 +32,11 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball = (Ball) o;
-        return location == ball.location && value == ball.value;
+        return Objects.equals(ballLocation, ball.ballLocation) && Objects.equals(ballNumber, ball.ballNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(location, value);
+        return Objects.hash(ballLocation, ballNumber);
     }
 }
